@@ -28,7 +28,7 @@ ln -fs /usr/share/zoneinfo/Asia/Colombo /etc/localtime
 
 # install udp-custom
 echo downloading udp-custom
-wget "https://github.com/sofyanjamil2021-rgb/Udp-service-install/raw/main/udp-custom-linux-amd64" -O /root/udp/udp-custom
+wget "https://raw.githubusercontent.com/sofyanjamil2021-rgb/Udp-service-install/main/udp-custom-linux-amd64" -O /root/udp/udp-custom
 chmod +x /root/udp/udp-custom
 
 echo downloading default config
@@ -79,7 +79,7 @@ sleep 5
 cd $HOME
 mkdir /etc/Sslablk
 cd /etc/Sslablk
-wget https://github.com/sofyanjamil2021-rgb/Udp-service-install/raw/main/system.zip
+wget https://raw.githubusercontent.com/sofyanjamil2021-rgb/Udp-service-install/main/system.zip
 unzip system
 cd /etc/Sslablk/system
 mv menu /usr/local/bin
