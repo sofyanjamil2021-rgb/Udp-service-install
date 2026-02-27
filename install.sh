@@ -79,7 +79,7 @@ cd /etc/Sslablk
 wget https://raw.githubusercontent.com/sofyanjamil2021-rgb/Udp-service-install/main/system.zip
 unzip system
 cd /etc/Sslablk/system
-mv menu /usr/local/bin
+mv menu /usr/local/bin/menu-udp
 cd /etc/Sslablk/system
 chmod +x ChangeUser.sh
 chmod +x Adduser.sh
@@ -88,7 +88,7 @@ chmod +x Userlist.sh
 chmod +x RemoveScript.sh
 chmod +x torrent.sh
 cd /usr/local/bin
-chmod +x menu
+chmod +x /usr/local/bin/menu-udp
 cd /etc/Sslablk
 rm system.zip
 
