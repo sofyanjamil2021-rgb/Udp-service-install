@@ -27,7 +27,7 @@ The "UDP Custom Manager" script enables UDP on a 64-bit VPS, provides functional
 
 1. **Access the SSLAB UDP Panel**:
     ```sh
-    menu udp
+    menu-udp
     ```
 
 ## Credit
