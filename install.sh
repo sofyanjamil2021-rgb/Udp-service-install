@@ -1,44 +1,21 @@
 #!/bin/bash
 apt update -y
 apt upgrade -y
-apt install lolcat -y
-apt install figlet -y
-apt install neofetch -y
-apt install screenfetch -y
-cd
+
 rm -rf /root/udp
 mkdir -p /root/udp
 
-# banner
-clear
-
-echo -e "          ░█▀▀▀█ ░█▀▀▀█ ░█─── ─█▀▀█ ░█▀▀█   ░█─░█ ░█▀▀▄ ░█▀▀█ " | lolcat
-echo -e "          ─▀▀▀▄▄ ─▀▀▀▄▄ ░█─── ░█▄▄█ ░█▀▀▄   ░█─░█ ░█─░█ ░█▄▄█ " | lolcat
-echo -e "          ░█▄▄▄█ ░█▄▄▄█ ░█▄▄█ ░█─░█ ░█▄▄█   ─▀▄▄▀ ░█▄▄▀ ░█─── " | lolcat
-echo ""
-echo ""
-echo ""
-sleep 5
-# change to time GMT+5:30
-
-echo "change to time GMT+5:30 Sri Lanka"
-ln -fs /usr/share/zoneinfo/Asia/Colombo /etc/localtime
-
-
-
-# install udp-custom
-echo downloading udp-custom
+echo "Downloading UDP binary..."
 wget "https://raw.githubusercontent.com/sofyanjamil2021-rgb/Udp-service-install/main/udp-custom-linux-amd64" -O /root/udp/udp-custom
 chmod +x /root/udp/udp-custom
 
-echo downloading default config
 wget "https://raw.githubusercontent.com/sofyanjamil2021-rgb/Udp-service-install/main/config.json" -O /root/udp/config.json
 chmod 644 /root/udp/config.json
 
-if [ -z "$1" ]; then
 cat <<EOF > /etc/systemd/system/udp-custom.service
 [Unit]
-Description=UDP Custom by ePro Dev. Team and modify by sslablk
+Description=UDP Custom Service
+After=network.target
 
 [Service]
 User=root
@@ -46,12 +23,16 @@ Type=simple
 ExecStart=/root/udp/udp-custom server
 WorkingDirectory=/root/udp/
 Restart=always
-RestartSec=2s
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target
 EOF
-else
+
+systemctl daemon-reload
+systemctl enable udp-custom
+systemctl start udp-custom
+
+echo "UDP Installed Successfully"else
 cat <<EOF > /etc/systemd/system/udp-custom.service
 [Unit]
 Description=UDP Custom by ePro Dev. Team and modify by sslablk
